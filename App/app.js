@@ -15,14 +15,31 @@ myApp.config(function ($routeProvider) {
     .otherwise({ redirectTo: '/view1' });
 });
 
-let controllers = {};
-controllers.SimpleController = function ($scope) {
-  $scope.people = [
+myApp.factory('simpleFactory', function() {
+  let people = [
     {name:'John Smith', city:'Phoenix'},
     {name:'Dave Doe', city:'New York'},
     {name: 'Susan Brown', city: 'San Francisco'}, 
     {name:'Kate Dunn', city:'Boston'}
-  ];
+    ];
+    let factory = {};
+    factory.getPeople = function() {
+      return people;
+    };
+    factory.postPeople = function(person) {
+
+    };
+
+    return factory;
+
+});
+let controllers = {};
+controllers.SimpleController = function ($scope, simpleFactory) {
+  $scope.people = [];
+  init();
+  function init() {
+    $scope.people = simpleFactory.getPeople();
+  }
   $scope.addPerson = function () {
     $scope.people.push(
       {
