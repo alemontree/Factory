@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>View1</h2>
+  Name: 
+  <br />
+
+  <input type="text" data-ng-model="filter.name" /> {{ name }}
+  <br>
+
+  <h3>Looping with ng-repeat Directive </h3>
+  <ul>
+    <li data-ng-repeat="person in people | filter:filter.name | orderBy:'city'"> {{ person.name }} - {{person.city }} </li>
+  </ul>
+  <br>
+  Customer Name: <br>
+  <input type="text" data-ng-model="newPerson.name" />
+  <br>
+  Customer City: <br>
+  <input type="text" data-ng-model="newPerson.city" />
+  <br>
+  <button data-ng-Click="addPerson()">Add Person</button> <br>
+  <a href="#/view2">View 2</a>
+</div> 
